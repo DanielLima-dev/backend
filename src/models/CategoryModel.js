@@ -1,5 +1,5 @@
 const connection = require("../database/connection");
-const {DataTypes, Model} = require("sequelize");
+const {DataTypes} = require("sequelize");
 
 const CategoryModel = connection.define("CategoryModel", {
     name: {
@@ -9,6 +9,8 @@ const CategoryModel = connection.define("CategoryModel", {
     slug: DataTypes.STRING(255)
 }, {
     tableName: "category"
-})
+});
 
+CategoryModel.sync();
 module.exports = CategoryModel;
+

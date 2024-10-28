@@ -5,6 +5,7 @@ const ProductCategoryModel = connection.define("ProductCategoryModel",{
     product_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      onDelete: "CASCADE",
       references :{
         model:{
             tableName: "product",
@@ -17,6 +18,7 @@ const ProductCategoryModel = connection.define("ProductCategoryModel",{
     category_id:{
       type: DataTypes.INTEGER,
       allowNull: false,
+      onDelete: "CASCADE",
       references :{
         model:{
             tableName: "category",
