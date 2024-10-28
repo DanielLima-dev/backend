@@ -26,7 +26,11 @@ const ProductCategoryModel = connection.define("ProductCategoryModel",{
       } 
     }
 },{
-  tableName: "product_category"
+  tableName: "product_category",
+  timestamps: false
+
 });
+
+ProductCategoryModel.removeAttribute("id");
 
 module.exports = ProductCategoryModel;
