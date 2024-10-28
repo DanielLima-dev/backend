@@ -1,7 +1,7 @@
 const connection = require("../database/connection");
 const {DataTypes, Model} = require("sequelize");
 
-const ProductImageModel = connection.define("ProductImageMode", {
+const ProductImageModel = connection.define("ProductImageModel", {
     product_id:{
         type: DataTypes.INTEGER,
         allowNull: false,
