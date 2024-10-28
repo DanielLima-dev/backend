@@ -98,17 +98,35 @@ const productImages = [
     }
 ];
 
+const productOptions = [
+    {
+        product_id: 1,
+        title: "OPÇÃO 1"
+    },
+    {
+        product_id: 2,
+        title: "OPÇÃO 2"
+    },
+    {
+        product_id: 3,
+        title: "OPÇÃO 3"
+    }
+    
+];
+
 
 const ProductModel = require("../models/ProductModel");
 const CategoryModel = require("../models/CategoryModel");
 const ProductCategoryModel = require("../models/ProductCategoryModel");
 const ProductImageModel = require("../models/ProductImageModel");
+const ProductOptionModel = require("../models/ProductOptionModel");
 
 async function execute(){
     await ProductModel.bulkCreate(products);
     await CategoryModel.bulkCreate(categories);
     await ProductCategoryModel.bulkCreate(productCategories);
     await ProductImageModel.bulkCreate(productImages);
+    await ProductOptionModel.bulkCreate(productOptions);
 };
 
 execute();

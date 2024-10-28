@@ -7,12 +7,12 @@ const ProductOptionModel = require("../models/ProductOptionModel");
 
 
 async function execute(){
-    await CategoryModel.sync();
-    await UserModel.sync();
-    await ProductModel.sync();
-    await ProductOptionModel.sync();
-    await ProductImageModel.sync();
-    await ProductCategoryModel.sync();
+    await CategoryModel.sync({alter: true});
+    await UserModel.sync({alter: true});
+    await ProductModel.sync({alter: true});
+    await ProductOptionModel.sync({alter: true});
+    await ProductImageModel.sync({alter: true});
+    await ProductCategoryModel.sync({alter: true});
     
 }
 
