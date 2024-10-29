@@ -11,6 +11,6 @@ const CategoryModel = connection.define("CategoryModel", {
     tableName: "category"
 });
 
-CategoryModel.sync();
+
 module.exports = CategoryModel;
 
