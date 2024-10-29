@@ -1,3 +1,12 @@
+
+
 module.exports = (request, response) => {
-    response.end(" Listar todos os produtos")
+    response.json([
+        {
+            products: 10
+        },
+        {
+            users: 5
+        }
+    ]);
 };
