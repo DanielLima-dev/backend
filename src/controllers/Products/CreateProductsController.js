@@ -1,6 +1,8 @@
-const ProductModel = require('../../models/ProductModel');
+
 const fs = require("fs");
 const path = require("path");
+const ProductModel = require('../../models/ProductModel');
+const {saveByUrl} = require('../../services/product-images');
 
 module.exports = async (request, response) => {
     let {
@@ -14,19 +16,11 @@ module.exports = async (request, response) => {
 
     let {images} = request.body;
 
-    let res = await fetch(images);
-    let type = res.headers.get('content-type');
-    let extension = type.split('/').pop();
-    let buffer = Buffer.from(await res.arrayBuffer());
-    let filename = Math.random().toString(16).slice(2);
-    let directory = path.resolve(`public/${slug}`);
-    if(!fs.existsSync(directory)){
-        fs.mkdirSync(directory, {recursive: true});
-    }
-
-    let file = `${directory}/${filename}.${extension}`;
-    console.log(file)
-    fs.writeFileSync(file, buffer);
+    saveByUrl({
+        url: images,
+        filename: Math.random().toString(16).slice(2),
+        slug
+    });
 
     response.status(201);
     return response.json(product);
