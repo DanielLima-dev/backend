@@ -6,6 +6,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use('/public', express.static('public'));
 
 const userRoutes = require("./routes/user-route");
 
