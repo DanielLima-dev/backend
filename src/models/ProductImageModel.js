@@ -1,16 +1,20 @@
 const connection = require("../database/connection");
 const {DataTypes, Model} = require("sequelize");
+const { getPublicUrl } = require("../utils/url-builder");
+
 
 const ProductImageModel = connection.define("ProductImageModel", {
     product_id:{
         type: DataTypes.INTEGER,
         allowNull: false,
+        onDelete: "CASCADE",
         references :{
             model:{
                 tableName: "product"
             },
             key: "id"
         }
+        
     },
     path:{
         type: DataTypes.STRING(255),
@@ -19,7 +23,7 @@ const ProductImageModel = connection.define("ProductImageModel", {
     url: {
         type: DataTypes.VIRTUAL,
         get(){
-            return `http://localhost:3000/public/${this.path}`
+            return getPublicUrl(this.path);
         }
     }
 }, {
